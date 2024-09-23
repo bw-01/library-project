@@ -1,0 +1,20 @@
+td, th {
+    border: 1px solid #999;
+    padding: 0.5rem;
+}
+
+table {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.book-form {
+    display: none;
+    margin-top: 20px;
+}
+
+.radio-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}

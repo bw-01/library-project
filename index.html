@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="main.js" defer></script>
+    <title>My Library</title>
+  </head>
+  <body>
+    <table class="library-table">
+      <!-- <tr>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Pages</th>
+        <th>Read?</th>
+      </tr> -->
+    </table>
+
+    <button class="new-book">NEW BOOK</button>
+
+    <div class="book-form">
+      <form>
+        <label for="title">Title:</label><br />
+        <input type="text" id="title" name="title" required/><br /><br />
+
+        <label for="author">Author:</label><br />
+        <input type="text" id="author" name="author" required/><br /><br />
+
+        <label for="pages">Number of pages:</label><br />
+        <input type="number" id="pages" name="pages" /><br /><br />
+
+        <div class="radio-group">
+          <label>Have you read the book?</label><br />
+          <input type="radio" id="read-yes" name="read" value="Yes" required />
+          <label for="read-yes">Yes</label><br />
+          <input type="radio" id="read-no" name="read" value="No" />
+          <label for="read-no">No</label><br />
+        </div>
+
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>
