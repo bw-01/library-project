@@ -1,5 +1,6 @@
 const myLibrary = [];
 
+//Book object constructor
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -10,11 +11,13 @@ function Book(title, author, pages, read) {
   };
 }
 
+//Add books to the library array
 myLibrary.push(new Book("1984", "George Orwell", 328, "Yes"));
 myLibrary.push(new Book("To Kill a Mockingbird", "Harper Lee", 281, "No"));
 let book1 = new Book("The Great Gatsby", "F. Scott Fitzgerald", 180, "Yes");
 myLibrary.push(book1);
 
+//Clears the books table so it can be updated
 function clearTable() {
   const libraryTable = document.querySelector(".library-table");
   libraryTable.innerHTML = `
@@ -29,16 +32,19 @@ function clearTable() {
     `;
 }
 
+//Delete a book
 function deleteBook(index) {
   myLibrary.splice(index, 1);
   listBooks();
 }
 
+//Update the read status to the opposite option
 function updateRead(index) {
   myLibrary[index].read = myLibrary[index].read === "Yes" ? "No" : "Yes";
   listBooks();
 }
 
+//Fills the table with books from the library array
 function listBooks() {
   clearTable();
   const libraryTable = document.querySelector(".library-table");
@@ -86,10 +92,12 @@ const newBookButton = document.querySelector(".new-book");
 const newBookForm = document.querySelector(".book-form form");
 const formContainer = document.querySelector(".book-form");
 
+//Display the form to add a new book with the 'New Book' button is pressed
 newBookButton.addEventListener("click", function () {
   formContainer.style.display = "block";
 });
 
+//Get the book details from the form and add it to the library
 newBookForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
