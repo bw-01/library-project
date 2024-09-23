@@ -23,14 +23,20 @@ function clearTable() {
             <th>Author</th>
             <th>Pages</th>
             <th>Read(?)</th>
-            <th>Delete</th>
+            <th>Delete Book</th>
+            <th>Toggle Read</th>
         </tr>
     `;
 }
 
 function deleteBook(index) {
-    myLibrary.splice(index, 1);
-    listBooks();
+  myLibrary.splice(index, 1);
+  listBooks();
+}
+
+function updateRead(index) {
+  myLibrary[index].read = myLibrary[index].read === "Yes" ? "No" : "Yes";
+  listBooks();
 }
 
 function listBooks() {
@@ -53,13 +59,24 @@ function listBooks() {
     readCell.textContent = book.read;
 
     const deleteCell = row.insertCell();
+    deleteCell.classList.add("delete-cell");
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "Delete";
     deleteButton.classList.add("delete-button");
-    deleteButton.addEventListener("click", function() {
-        deleteBook(index);
+    deleteButton.addEventListener("click", function () {
+      deleteBook(index);
     });
     deleteCell.appendChild(deleteButton);
+
+    const readToggle = row.insertCell();
+    readToggle.classList.add("read-toggle");
+    const readButton = document.createElement("button");
+    readButton.textContent = "Read";
+    readButton.classList.add("read-button");
+    readButton.addEventListener("click", function () {
+      updateRead(index);
+    });
+    readToggle.appendChild(readButton);
   });
 }
 
@@ -69,7 +86,7 @@ const newBookButton = document.querySelector(".new-book");
 const newBookForm = document.querySelector(".book-form form");
 const formContainer = document.querySelector(".book-form");
 
-newBookButton.addEventListener("click", function() {
+newBookButton.addEventListener("click", function () {
   formContainer.style.display = "block";
 });
 
