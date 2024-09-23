@@ -1,6 +1,6 @@
 # Library Website
 
-A simple library website to track books owned and read. Created to demonstrate understanding of JavaScript classes, functions and DOM manipulation. Includes the ability to add new books and delete books.
+A simple library website to track books owned and read. Created to demonstrate understanding of JavaScript objects, functions and DOM manipulation. Includes the ability to add new books and delete books.
 
 - Author: Bart W
 
