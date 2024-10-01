@@ -1,14 +1,24 @@
 const myLibrary = [];
 
-//Book object constructor
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.info = function () {
+//Book class
+class Book {
+  #pages = 0; //use # to set to private so property can't be changed
+  
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.#pages = pages;
+    this.read = read;
+  }
+
+  //getter is required to access a private property
+  get pages() {
+    return this.#pages;
+  }
+
+  get info() {
     return `${this.title} by ${this.author}, ${this.pages} pages, ${this.read} read yet`;
-  };
+  }
 }
 
 //Add books to the library array
