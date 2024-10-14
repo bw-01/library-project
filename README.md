@@ -14,4 +14,5 @@ To set up the project locally.
 
 ## Updates
 
-- Book constructor was changed to a class for practice. 
+- Book constructor was changed to a class for practice.
+- New Book form was updated to use the JavaScript Constraint Validation API to provide custom validation messages.
