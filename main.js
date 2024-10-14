@@ -3,7 +3,7 @@ const myLibrary = [];
 //Book class
 class Book {
   #pages = 0; //use # to set to private so property can't be changed
-  
+
   constructor(title, author, pages, read) {
     this.title = title;
     this.author = author;
@@ -107,14 +107,56 @@ newBookButton.addEventListener("click", function () {
   formContainer.style.display = "block";
 });
 
+//Form validation
+const titleInput = document.getElementById("title");
+const authorInput = document.getElementById("author");
+const pagesInput = document.getElementById("pages");
+
+function validateForm() {
+  if (titleInput.validity.valueMissing) {
+    titleInput.setCustomValidity("Please enter a title");
+  } else if (titleInput.validity.tooShort) {
+    titleInput.setCustomValidity("Title is too short, must be at least 1 character");
+  } else {
+    titleInput.setCustomValidity("");
+  }
+
+  if (author.validity.valueMissing) {
+    author.setCustomValidity("Please add an author");
+  } else if (author.validity.tooShort) {
+    author.setCustomValidity("Author name is too short, must be at least 3 characters");
+  } else {
+    author.setCustomValidity("");
+  }
+
+  if (pages.value < 10) {
+    pages.setCustomValidity("The book must have at least 10 pages")
+  } else {
+    pages.setCustomValidity("");
+  }
+}
+
+titleInput.addEventListener("input", validateForm);
+authorInput.addEventListener("input", validateForm);
+pagesInput.addEventListener("input", validateForm);
+
 //Get the book details from the form and add it to the library
 newBookForm.addEventListener("submit", function (event) {
   event.preventDefault();
 
-  const title = document.getElementById("title").value;
-  const author = document.getElementById("author").value;
-  const pages = document.getElementById("pages").value;
+  validateForm(); //trigger validation check before form submission
+
+  //Check if form is valid after running custom validation
+  if (!newBookForm.checkValidity()) {
+    newBookForm.reportValidity(); //displays validation error messages
+    return;
+  }
+
+  const title = titleInput.value;
+  const author = authorInput.value;
+  const pages = pagesInput.value;
   const read = document.querySelector('input[name="read"]:checked').value;
+
   let book = new Book(title, author, pages, read);
   myLibrary.push(book);
 
